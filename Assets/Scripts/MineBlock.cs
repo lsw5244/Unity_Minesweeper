@@ -11,22 +11,19 @@ public class MineBlock : MonoBehaviour, IMineBlockEvent
 
     public void Click()
     {
-        if (nowTouch == false)
-            return;
-
         Debug.Log("Click");
-        nowTouch = false;
+        TouchEnd();
     }
 
     public void LongTouch()
     {
         Debug.Log("LongTouch");
-        nowTouch = false;
+        TouchEnd();
     }
 
     private void OnMouseUp()
     {
-        nowTouch = false;
+        TouchEnd();
     }
 
     private void OnMouseDown()
@@ -36,10 +33,12 @@ public class MineBlock : MonoBehaviour, IMineBlockEvent
 
     private void OnMouseUpAsButton()
     {
+        if (nowTouch == false)
+            return;
+
         Click();
     }
 
-    // 클릭 중 계속해서 동작
     private void OnMouseDrag()
     {
         if (nowTouch == false)
@@ -49,6 +48,12 @@ public class MineBlock : MonoBehaviour, IMineBlockEvent
         if(touchTime >= longTouchTime)
         {
             LongTouch();
-        }
+        }        
+    }
+
+    void TouchEnd()
+    {
+        nowTouch = false;
+        touchTime = 0f;
     }
 }
