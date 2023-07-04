@@ -22,7 +22,8 @@ public class GameManager : MonoBehaviour
     {
         // 처음으로 MineBlock이 생성 될 위치
         Vector2 firstPos = new Vector2(-2.2f, 3.2f);
-        float blockSize = mineBlockPrefabs.transform.localScale.x;
+        float blockSizeX = mineBlockPrefabs.transform.localScale.x;
+        float blockSizeY = mineBlockPrefabs.transform.localScale.y;
 
         for (int i = 0; i < boardHeightLength; ++i)
         {
@@ -30,7 +31,7 @@ public class GameManager : MonoBehaviour
             {
                 mineBlocks[i, j] = Instantiate(mineBlockPrefabs);
                 mineBlocks[i, j].transform.position
-                    = new Vector2(firstPos.x + blockSize * j, firstPos.y - blockSize * i);
+                    = new Vector2(firstPos.x + blockSizeX * j, firstPos.y - blockSizeY * i);
             }
         }
     }
