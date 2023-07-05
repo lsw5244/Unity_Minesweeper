@@ -7,9 +7,11 @@ public class MineBlock : MonoBehaviour, IMineBlockEvent
     [SerializeField]
     private Sprite[] blockNumberIcons;
     [SerializeField]
-    private Sprite defaultMineBlockIcon;
+    private Sprite defaultBlockIcon;
     [SerializeField]
     private Sprite flagIcon;
+    [SerializeField]
+    private Sprite explosionBlockIcon;
 
     private float longTouchTime = 0.5f;
     private float touchTime = 0f;
@@ -29,6 +31,12 @@ public class MineBlock : MonoBehaviour, IMineBlockEvent
     public void Click()
     {
         Debug.Log("Click");
+
+        if(isMine == true)
+        {
+            spriteRenderer.sprite = explosionBlockIcon;
+        }
+
         TouchEnd();
     }
 
@@ -38,7 +46,7 @@ public class MineBlock : MonoBehaviour, IMineBlockEvent
 
         if(spriteRenderer.sprite == flagIcon)
         {
-            spriteRenderer.sprite = defaultMineBlockIcon;
+            spriteRenderer.sprite = defaultBlockIcon;
         }
         else
         {

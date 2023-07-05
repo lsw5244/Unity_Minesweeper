@@ -106,8 +106,9 @@ MonoBehaviour:
   - {fileID: 8786006574952027668, guid: 3f2158f3d7e7eac4a9037800d355382c, type: 3}
   - {fileID: 6100672721992642399, guid: 3f2158f3d7e7eac4a9037800d355382c, type: 3}
   - {fileID: -2875959815096653180, guid: 3f2158f3d7e7eac4a9037800d355382c, type: 3}
-  defaultMineBlockIcon: {fileID: 8767393028407934154, guid: fab0466f712e37c4a90e6875c7b841cb, type: 3}
+  defaultBlockIcon: {fileID: 8767393028407934154, guid: fab0466f712e37c4a90e6875c7b841cb, type: 3}
   flagIcon: {fileID: -6998246668980584687, guid: fab0466f712e37c4a90e6875c7b841cb, type: 3}
+  explosionBlockIcon: {fileID: -3612855605073347646, guid: fab0466f712e37c4a90e6875c7b841cb, type: 3}
   isMine: 0
 --- !u!61 &-1332852453348073091
 BoxCollider2D:
