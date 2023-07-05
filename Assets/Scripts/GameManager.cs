@@ -10,11 +10,11 @@ public class GameManager : MonoBehaviour
     private int boardWidthLength = 12;
     private int boardHeightLength = 20;
     private int mineCount = 56;
-    private GameObject[,] mineBlocks;
+    private MineBlock[,] mineBlocks;
 
     void Start()
     {
-        mineBlocks = new GameObject[boardHeightLength, boardWidthLength];
+        mineBlocks = new MineBlock[boardHeightLength, boardWidthLength];
         SpawnMineBlock();
     }
 
@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
         {
             for (int j = 0; j < boardWidthLength; ++j)
             {
-                mineBlocks[i, j] = Instantiate(mineBlockPrefabs);
+                mineBlocks[i, j] = Instantiate(mineBlockPrefabs).GetComponent<MineBlock>();
                 mineBlocks[i, j].transform.position
                     = new Vector2(firstPos.x + blockSizeX * j, firstPos.y - blockSizeY * i);
             }
