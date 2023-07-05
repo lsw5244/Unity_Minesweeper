@@ -8,6 +8,9 @@ public class MineBlock : MonoBehaviour, IMineBlockEvent
     private float touchTime = 0f;
 
     private bool nowTouch = false;
+    
+    [HideInInspector]
+    public bool isMine = false;
 
     public void Click()
     {

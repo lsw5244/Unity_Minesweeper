@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     {
         mineBlocks = new MineBlock[boardHeightLength, boardWidthLength];
         SpawnMineBlock();
+        MinePlant();
     }
 
     void SpawnMineBlock()
@@ -34,5 +35,26 @@ public class GameManager : MonoBehaviour
                     = new Vector2(firstPos.x + blockSizeX * j, firstPos.y - blockSizeY * i);
             }
         }
+    }
+
+    void MinePlant()
+    {
+        for(int i = 0; i < mineCount; ++i)
+        {
+            int x = Random.Range(0, boardWidthLength);
+            int y = Random.Range(0, boardHeightLength);
+
+            if(mineBlocks[y, x].isMine == false)
+            {
+                mineBlocks[y, x].isMine = true;
+                Debug.Log($"{y}, {x}¿¡ Áö·Ú ¼³Ä¡ {i + 1} ¹øÂ° Áö·Ú");
+            }
+            else
+            {
+                --i;
+            }
+
+        }
+        //mineBlocks[y, x].gameObject.SetActive(false);
     }
 }
