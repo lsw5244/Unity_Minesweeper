@@ -15,10 +15,17 @@ public class MineBlock : MonoBehaviour, IMineBlockEvent
     private float touchTime = 0f;
 
     private bool nowTouch = false;
-    
+
+    private SpriteRenderer spriteRenderer;
+
     [HideInInspector]
     public bool isMine = false;
 
+    void Start()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+    
     public void Click()
     {
         Debug.Log("Click");
@@ -28,7 +35,7 @@ public class MineBlock : MonoBehaviour, IMineBlockEvent
     public void LongTouch()
     {
         Debug.Log("LongTouch");
-        GetComponent<SpriteRenderer>().sprite = flagIcon;
+        spriteRenderer.sprite = flagIcon;
         TouchEnd();
     }
 
