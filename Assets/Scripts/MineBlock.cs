@@ -35,7 +35,16 @@ public class MineBlock : MonoBehaviour, IMineBlockEvent
     public void LongTouch()
     {
         Debug.Log("LongTouch");
-        spriteRenderer.sprite = flagIcon;
+
+        if(spriteRenderer.sprite == flagIcon)
+        {
+            spriteRenderer.sprite = defaultMineBlockIcon;
+        }
+        else
+        {
+            spriteRenderer.sprite = flagIcon;
+        }
+
         TouchEnd();
     }
 
