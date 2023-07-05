@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class MineBlock : MonoBehaviour, IMineBlockEvent
 {
+    [SerializeField]
+    private Sprite[] blockNumberIcons;
+    [SerializeField]
+    private Sprite defaultMineBlockIcon;
+    [SerializeField]
+    private Sprite flagIcon;
+
     private float longTouchTime = 0.5f;
     private float touchTime = 0f;
 
@@ -21,6 +28,7 @@ public class MineBlock : MonoBehaviour, IMineBlockEvent
     public void LongTouch()
     {
         Debug.Log("LongTouch");
+        GetComponent<SpriteRenderer>().sprite = flagIcon;
         TouchEnd();
     }
 

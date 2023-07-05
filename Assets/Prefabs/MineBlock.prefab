@@ -96,6 +96,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb3e805235c3ac44bb32db2bfb8a6f71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blockNumberIcons:
+  - {fileID: 2357487951092156340, guid: fab0466f712e37c4a90e6875c7b841cb, type: 3}
+  - {fileID: -7983998822442831038, guid: 3f2158f3d7e7eac4a9037800d355382c, type: 3}
+  - {fileID: 9090520086172003474, guid: 3f2158f3d7e7eac4a9037800d355382c, type: 3}
+  - {fileID: 7127252921502232880, guid: 3f2158f3d7e7eac4a9037800d355382c, type: 3}
+  - {fileID: 2891062659416067993, guid: 3f2158f3d7e7eac4a9037800d355382c, type: 3}
+  - {fileID: 1158796528084041276, guid: 3f2158f3d7e7eac4a9037800d355382c, type: 3}
+  - {fileID: 8786006574952027668, guid: 3f2158f3d7e7eac4a9037800d355382c, type: 3}
+  - {fileID: 6100672721992642399, guid: 3f2158f3d7e7eac4a9037800d355382c, type: 3}
+  - {fileID: -2875959815096653180, guid: 3f2158f3d7e7eac4a9037800d355382c, type: 3}
+  defaultMineBlockIcon: {fileID: 8767393028407934154, guid: fab0466f712e37c4a90e6875c7b841cb, type: 3}
+  flagIcon: {fileID: -6998246668980584687, guid: fab0466f712e37c4a90e6875c7b841cb, type: 3}
+  isMine: 0
 --- !u!61 &-1332852453348073091
 BoxCollider2D:
   m_ObjectHideFlags: 0
