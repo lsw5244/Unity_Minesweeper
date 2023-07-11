@@ -22,6 +22,12 @@ public class MineBlock : MonoBehaviour, IMineBlockEvent
 
     [HideInInspector]
     public bool isMine = false;
+    [HideInInspector]
+    public int idxI;
+    [HideInInspector]
+    public int idxJ;
+
+    private GameManager gameManager;
 
     void Start()
     {
@@ -30,20 +36,18 @@ public class MineBlock : MonoBehaviour, IMineBlockEvent
     
     public void Click()
     {
-        Debug.Log("Click");
-
         if(isMine == true)
         {
             spriteRenderer.sprite = explosionBlockIcon;
         }
+
+        gameManager.AroundMineCheck();
 
         TouchEnd();
     }
 
     public void LongTouch()
     {
-        Debug.Log("LongTouch");
-
         if(spriteRenderer.sprite == flagIcon)
         {
             spriteRenderer.sprite = defaultBlockIcon;
@@ -90,5 +94,17 @@ public class MineBlock : MonoBehaviour, IMineBlockEvent
     {
         nowTouch = false;
         touchTime = 0f;
+    }
+
+    //---
+    public void SetGameManager(GameManager gameManager)
+    {
+        this.gameManager = gameManager;
+    }
+
+    public void SetIndex(int i, int j)
+    {
+        idxI = i;
+        idxJ = j;
     }
 }

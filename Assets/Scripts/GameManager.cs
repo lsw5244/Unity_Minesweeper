@@ -33,6 +33,8 @@ public class GameManager : MonoBehaviour
                 mineBlocks[i, j] = Instantiate(mineBlockPrefabs).GetComponent<MineBlock>();
                 mineBlocks[i, j].transform.position
                     = new Vector2(firstPos.x + blockSizeX * j, firstPos.y - blockSizeY * i);
+                mineBlocks[i, j].SetGameManager(this);
+                mineBlocks[i, j].SetIndex(i, j);
             }
         }
     }
@@ -47,7 +49,6 @@ public class GameManager : MonoBehaviour
             if(mineBlocks[y, x].isMine == false)
             {
                 mineBlocks[y, x].isMine = true;
-                Debug.Log($"{y}, {x}¿¡ Áö·Ú ¼³Ä¡ {i + 1} ¹øÂ° Áö·Ú");
             }
             else
             {
@@ -55,6 +56,10 @@ public class GameManager : MonoBehaviour
             }
 
         }
-        //mineBlocks[y, x].gameObject.SetActive(false);
+    }
+
+    public void AroundMineCheck()
+    {
+        //Debug.Log("############");
     }
 }
