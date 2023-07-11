@@ -126,4 +126,70 @@ public class GameManager : MonoBehaviour
             aroundMineCount++;
         }
     }
+
+    public void AroundMineBlockClick(int i, int j)
+    {
+        // TopLeft
+        if(CheckValidMineBlock(i - 1, j - 1) == true)
+        {
+            mineBlocks[i - 1, j - 1].Click();
+        }
+
+        // Top
+        if (CheckValidMineBlock(i - 1, j) == true)
+        {
+            mineBlocks[i - 1, j].Click();
+        }
+
+        // TopRight
+        if (CheckValidMineBlock(i - 1, j + 1) == true)
+        {
+            mineBlocks[i - 1, j + 1].Click();
+        }
+
+        // Left
+        if (CheckValidMineBlock(i, j - 1) == true)
+        {
+            mineBlocks[i, j - 1].Click();
+        }
+
+        // Right
+        if (CheckValidMineBlock(i, j + 1) == true)
+        {
+            mineBlocks[i, j + 1].Click();
+        }
+
+        // BottomLeft
+        if (CheckValidMineBlock(i + 1, j - 1) == true)
+        {
+            mineBlocks[i + 1, j - 1].Click();
+        }
+
+        // Bottom
+        if (CheckValidMineBlock(i + 1, j) == true)
+        {
+            mineBlocks[i + 1, j].Click();
+        }
+
+        // BottomRight
+        if (CheckValidMineBlock(i + 1, j + 1) == true)
+        {
+            mineBlocks[i + 1, j + 1].Click();
+        }
+    }
+
+    bool CheckValidMineBlock(int i, int j)
+    {
+        if (i < 0 || i >= boardHeightLength)
+        {
+            return false;
+        }
+
+        if (j < 0 || j >= boardWidthLength)
+        {
+            return false;
+        }
+
+        return true;
+    }
 }

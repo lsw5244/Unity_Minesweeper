@@ -14,7 +14,7 @@ public class MineBlock : MonoBehaviour, IMineBlockEvent
     private Sprite explosionBlockIcon;
 
     private float longTouchTime = 0.5f;
-    private float touchTime = 0f;
+    private float touchTime = 0f;    
 
     private bool nowTouch = false;
 
@@ -36,7 +36,8 @@ public class MineBlock : MonoBehaviour, IMineBlockEvent
     
     public void Click()
     {
-        if(spriteRenderer.sprite == flagIcon)
+        // FlagIcon일때와 DefaultBlockIcon일때만 Click이벤트를 실행시키기 위한 if문
+        if(spriteRenderer.sprite == flagIcon || spriteRenderer.sprite != defaultBlockIcon)
         {
             return;
         }
@@ -47,7 +48,14 @@ public class MineBlock : MonoBehaviour, IMineBlockEvent
             return;
         }
 
-        spriteRenderer.sprite = blockNumberIcons[gameManager.AroundMineBlockCheck(idxI, idxJ)];
+        int aroundMineCount = gameManager.AroundMineBlockCheck(idxI, idxJ);
+
+        spriteRenderer.sprite = blockNumberIcons[aroundMineCount];
+        if(aroundMineCount <= 0)
+        {
+            gameManager.AroundMineBlockClick(idxI, idxJ);
+        }
+
 
         TouchEnd();
     }
