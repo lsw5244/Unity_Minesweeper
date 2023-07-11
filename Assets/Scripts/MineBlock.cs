@@ -39,9 +39,11 @@ public class MineBlock : MonoBehaviour, IMineBlockEvent
         if(isMine == true)
         {
             spriteRenderer.sprite = explosionBlockIcon;
+            return;
         }
 
-        gameManager.AroundMineCheck();
+        //gameManager.AroundMineCheck(idxI, idxJ);
+        spriteRenderer.sprite = blockNumberIcons[gameManager.AroundMineCheck(idxI, idxJ)];
 
         TouchEnd();
     }
