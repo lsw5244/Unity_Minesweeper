@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public int AroundMineCheck(int i, int j)
+    public int AroundMineBlockCheck(int i, int j)
     {
         int aroundMineCount = 0;
 
@@ -68,106 +68,62 @@ public class GameManager : MonoBehaviour
         // TopLeft
         checkIdxI = i - 1;
         checkIdxJ = j - 1;
+        CheckMineBlock(checkIdxI, checkIdxJ, ref aroundMineCount);
 
-        if (CheckValidIdx(checkIdxI, checkIdxJ) == true)
-        {
-            if (mineBlocks[checkIdxI, checkIdxJ].isMine == true)
-            {
-                aroundMineCount++;
-            }
-        }
         // Top
         checkIdxI = i - 1;
         checkIdxJ = j;
+        CheckMineBlock(checkIdxI, checkIdxJ, ref aroundMineCount);
 
-        if (CheckValidIdx(checkIdxI, checkIdxJ) == true)
-        {
-            if (mineBlocks[checkIdxI, checkIdxJ].isMine == true)
-            {
-                aroundMineCount++;
-            }
-        }
         // TopRight
         checkIdxI = i - 1;
         checkIdxJ = j + 1;
+        CheckMineBlock(checkIdxI, checkIdxJ, ref aroundMineCount);
 
-        if (CheckValidIdx(checkIdxI, checkIdxJ) == true)
-        {
-            if (mineBlocks[checkIdxI, checkIdxJ].isMine == true)
-            {
-                aroundMineCount++;
-            }
-        }
         // Left
         checkIdxI = i;
         checkIdxJ = j - 1;
+        CheckMineBlock(checkIdxI, checkIdxJ, ref aroundMineCount);
 
-        if (CheckValidIdx(checkIdxI, checkIdxJ) == true)
-        {
-            if (mineBlocks[checkIdxI, checkIdxJ].isMine == true)
-            {
-                aroundMineCount++;
-            }
-        }
         // Right
         checkIdxI = i;
         checkIdxJ = j + 1;
+        CheckMineBlock(checkIdxI, checkIdxJ, ref aroundMineCount);
 
-        if (CheckValidIdx(checkIdxI, checkIdxJ) == true)
-        {
-            if (mineBlocks[checkIdxI, checkIdxJ].isMine == true)
-            {
-                aroundMineCount++;
-            }
-        }
         // BottomLeft
         checkIdxI = i + 1;
         checkIdxJ = j - 1;
+        CheckMineBlock(checkIdxI, checkIdxJ, ref aroundMineCount);
 
-        if (CheckValidIdx(checkIdxI, checkIdxJ) == true)
-        {
-            if (mineBlocks[checkIdxI, checkIdxJ].isMine == true)
-            {
-                aroundMineCount++;
-            }
-        }
         // Bottom
         checkIdxI = i + 1;
         checkIdxJ = j;
+        CheckMineBlock(checkIdxI, checkIdxJ, ref aroundMineCount);
 
-        if (CheckValidIdx(checkIdxI, checkIdxJ) == true)
-        {
-            if (mineBlocks[checkIdxI, checkIdxJ].isMine == true)
-            {
-                aroundMineCount++;
-            }
-        }
         // BottomRight
         checkIdxI = i + 1;
         checkIdxJ = j + 1;
-        if (CheckValidIdx(checkIdxI, checkIdxJ) == true)
-        {
-            if (mineBlocks[checkIdxI, checkIdxJ].isMine == true)
-            {
-                aroundMineCount++;
-            }
-        }
+        CheckMineBlock(checkIdxI, checkIdxJ, ref aroundMineCount);
+
 
         return aroundMineCount;
     }
 
-    bool CheckValidIdx(int i, int j)
+    void CheckMineBlock(int i, int j, ref int aroundMineCount)
     {
-        if(i < 0 || i >= boardHeightLength)
+        if (i < 0 || i >= boardHeightLength)
         {
-            return false;
+            return;
         }
 
-        if(j < 0 || j >= boardWidthLength)
+        if (j < 0 || j >= boardWidthLength)
         {
-            return false;
+            return;
         }
 
-        return true;
+        if (mineBlocks[i, j].isMine == true)
+        {
+            aroundMineCount++;
+        }
     }
 }
