@@ -54,7 +54,6 @@ public class GameManager : MonoBehaviour
             {
                 --i;
             }
-
         }
     }
 
@@ -62,75 +61,61 @@ public class GameManager : MonoBehaviour
     {
         int aroundMineCount = 0;
 
-        int checkIdxI;
-        int checkIdxJ;
-
         // TopLeft
-        checkIdxI = i - 1;
-        checkIdxJ = j - 1;
-        CheckMineBlock(checkIdxI, checkIdxJ, ref aroundMineCount);
+        if(CheckValidMineBlock(i - 1, j - 1) == true)
+        {
+            CheckMineBlock(i - 1, j - 1, ref aroundMineCount);
+        }
 
         // Top
-        checkIdxI = i - 1;
-        checkIdxJ = j;
-        CheckMineBlock(checkIdxI, checkIdxJ, ref aroundMineCount);
+        if (CheckValidMineBlock(i - 1, j) == true)
+        {
+            CheckMineBlock(i - 1, j, ref aroundMineCount);
+        }
 
         // TopRight
-        checkIdxI = i - 1;
-        checkIdxJ = j + 1;
-        CheckMineBlock(checkIdxI, checkIdxJ, ref aroundMineCount);
+        if (CheckValidMineBlock(i - 1, j + 1) == true)
+        {
+            CheckMineBlock(i - 1, j + 1, ref aroundMineCount);
+        }
 
         // Left
-        checkIdxI = i;
-        checkIdxJ = j - 1;
-        CheckMineBlock(checkIdxI, checkIdxJ, ref aroundMineCount);
+        if (CheckValidMineBlock(i, j - 1) == true)
+        {
+            CheckMineBlock(i, j - 1, ref aroundMineCount);
+        }
 
         // Right
-        checkIdxI = i;
-        checkIdxJ = j + 1;
-        CheckMineBlock(checkIdxI, checkIdxJ, ref aroundMineCount);
+        if (CheckValidMineBlock(i, j + 1) == true)
+        {
+            CheckMineBlock(i, j + 1, ref aroundMineCount);
+        }
 
         // BottomLeft
-        checkIdxI = i + 1;
-        checkIdxJ = j - 1;
-        CheckMineBlock(checkIdxI, checkIdxJ, ref aroundMineCount);
+        if (CheckValidMineBlock(i + 1, j - 1) == true)
+        {
+            CheckMineBlock(i + 1, j - 1, ref aroundMineCount);
+        }
 
         // Bottom
-        checkIdxI = i + 1;
-        checkIdxJ = j;
-        CheckMineBlock(checkIdxI, checkIdxJ, ref aroundMineCount);
+        if (CheckValidMineBlock(i + 1, j) == true)
+        {
+            CheckMineBlock(i + 1, j, ref aroundMineCount);
+        }
 
         // BottomRight
-        checkIdxI = i + 1;
-        checkIdxJ = j + 1;
-        CheckMineBlock(checkIdxI, checkIdxJ, ref aroundMineCount);
-
+        if (CheckValidMineBlock(i + 1, j + 1) == true)
+        {
+            CheckMineBlock(i + 1, j + 1, ref aroundMineCount);
+        }
 
         return aroundMineCount;
-    }
-
-    void CheckMineBlock(int i, int j, ref int aroundMineCount)
-    {
-        if (i < 0 || i >= boardHeightLength)
-        {
-            return;
-        }
-
-        if (j < 0 || j >= boardWidthLength)
-        {
-            return;
-        }
-
-        if (mineBlocks[i, j].isMine == true)
-        {
-            aroundMineCount++;
-        }
     }
 
     public void AroundMineBlockClick(int i, int j)
     {
         // TopLeft
-        if(CheckValidMineBlock(i - 1, j - 1) == true)
+        if (CheckValidMineBlock(i - 1, j - 1) == true)
         {
             mineBlocks[i - 1, j - 1].Click();
         }
@@ -175,6 +160,14 @@ public class GameManager : MonoBehaviour
         if (CheckValidMineBlock(i + 1, j + 1) == true)
         {
             mineBlocks[i + 1, j + 1].Click();
+        }
+    }
+
+    void CheckMineBlock(int i, int j, ref int aroundMineCount)
+    {
+        if (mineBlocks[i, j].isMine == true)
+        {
+            aroundMineCount++;
         }
     }
 
