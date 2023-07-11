@@ -36,6 +36,11 @@ public class MineBlock : MonoBehaviour, IMineBlockEvent
     
     public void Click()
     {
+        if(spriteRenderer.sprite == flagIcon)
+        {
+            return;
+        }
+
         if(isMine == true)
         {
             spriteRenderer.sprite = explosionBlockIcon;
